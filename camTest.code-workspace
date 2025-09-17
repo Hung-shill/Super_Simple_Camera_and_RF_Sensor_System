@@ -1,0 +1,149 @@
+{
+  "folders": [
+    {
+      "name": "ESP32-CAM Project",
+      "path": "./esp32_cam_project"
+    },
+    {
+      "name": "EMF Sensor Project",
+      "path": "./emf_sensor_project"
+    },
+    {
+      "name": "Shared Libraries",
+      "path": "./shared_libs"
+    },
+    {
+      "name": "Documentation",
+      "path": "./docs"
+    },
+    {
+      "name": "Project Root",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "files.associations": {
+      "*.ino": "cpp",
+      "*.h": "c",
+      "*.cpp": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "platformio",
+    "platformio-ide.useBuiltinPIOCore": true,
+    "platformio-ide.activateProjectOnTextEditorChange": false,
+    "platformio-ide.autoRebuildAutocompleteIndex": true
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "PlatformIO: Build ESP32-CAM",
+        "type": "shell",
+        "command": "pio",
+        "args": ["run"],
+        "options": {
+          "cwd": "${workspaceFolder}/esp32_cam_project"
+        },
+        "group": "build",
+        "problemMatcher": ["$platformio"]
+      },
+      {
+        "label": "PlatformIO: Upload ESP32-CAM",
+        "type": "shell",
+        "command": "pio",
+        "args": ["run", "--target", "upload"],
+        "options": {
+          "cwd": "${workspaceFolder}/esp32_cam_project"
+        },
+        "group": "build",
+        "problemMatcher": ["$platformio"]
+      },
+      {
+        "label": "PlatformIO: Monitor ESP32-CAM",
+        "type": "shell",
+        "command": "pio",
+        "args": ["device", "monitor"],
+        "options": {
+          "cwd": "${workspaceFolder}/esp32_cam_project"
+        },
+        "group": "build",
+        "isBackground": true,
+        "problemMatcher": ["$platformio"]
+      },
+      {
+        "label": "PlatformIO: Build EMF Sensor",
+        "type": "shell",
+        "command": "pio",
+        "args": ["run"],
+        "options": {
+          "cwd": "${workspaceFolder}/emf_sensor_project"
+        },
+        "group": "build",
+        "problemMatcher": ["$platformio"]
+      },
+      {
+        "label": "PlatformIO: Upload EMF Sensor",
+        "type": "shell",
+        "command": "pio",
+        "args": ["run", "--target", "upload"],
+        "options": {
+          "cwd": "${workspaceFolder}/emf_sensor_project"
+        },
+        "group": "build",
+        "problemMatcher": ["$platformio"]
+      },
+      {
+        "label": "PlatformIO: Monitor EMF Sensor",
+        "type": "shell",
+        "command": "pio",
+        "args": ["device", "monitor"],
+        "options": {
+          "cwd": "${workspaceFolder}/emf_sensor_project"
+        },
+        "group": "build",
+        "isBackground": true,
+        "problemMatcher": ["$platformio"]
+      },
+      {
+        "label": "Build Both Projects",
+        "dependsOrder": "parallel",
+        "dependsOn": [
+          "PlatformIO: Build ESP32-CAM",
+          "PlatformIO: Build EMF Sensor"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "platformio-debug",
+        "request": "launch",
+        "name": "Debug ESP32-CAM",
+        "executable": "${workspaceFolder}/esp32_cam_project/.pio/build/esp32cam/firmware.elf",
+        "projectEnvName": "esp32cam",
+        "toolchainBinDir": "${platformio.env_dir}/toolchain-xtensa32/bin"
+      },
+      {
+        "type": "platformio-debug",
+        "request": "launch",
+        "name": "Debug EMF Sensor",
+        "executable": "${workspaceFolder}/emf_sensor_project/.pio/build/esp32dev/firmware.elf",
+        "projectEnvName": "esp32dev",
+        "toolchainBinDir": "${platformio.env_dir}/toolchain-xtensa32/bin"
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "platformio.platformio-ide",
+      "ms-vscode.cpptools",
+      "ms-vscode.cpptools-extension-pack"
+    ]
+  }
+}

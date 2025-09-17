@@ -1,0 +1,2 @@
+- always ask for clarification
+- This is a system using RF sensors to pair with ESP32-CAM edge-computing system to detect the presence of car in the parking lot

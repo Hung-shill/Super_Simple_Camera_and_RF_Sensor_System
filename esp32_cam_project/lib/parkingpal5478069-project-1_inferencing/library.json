@@ -1,0 +1,23 @@
+{
+  "name": "parkingpal5478069-project-1_inferencing",
+  "version": "1.0.1",
+  "description": "Edge Impulse inference library for parking detection",
+  "keywords": "edge-impulse, machine-learning, esp32, camera",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edgeimpulse/example-standalone-inferencing"
+  },
+  "authors": [
+    {
+      "name": "EdgeImpulse Inc.",
+      "email": "hello@edgeimpulse.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "frameworks": "arduino",
+  "platforms": "espressif32",
+  "build": {
+    "includeDir": "src",
+    "srcDir": "src"
+  }
+}

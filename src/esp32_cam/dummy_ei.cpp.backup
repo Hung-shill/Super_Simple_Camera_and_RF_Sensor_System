@@ -1,0 +1,28 @@
+#include "dummy_ei.h"
+#include <Arduino.h>
+
+// Dummy implementation for testing without real Edge Impulse library
+
+const char* ei_classifier_inferencing_categories[EI_CLASSIFIER_LABEL_COUNT] = {
+    "vacant",
+    "car"
+};
+
+EI_IMPULSE_ERROR run_classifier(ei::signal_t* signal, ei_impulse_result_t* result, bool debug) {
+    // Dummy implementation - returns fake car detection
+    result->timing.dsp = 50;
+    result->timing.classification = 30;
+    result->timing.anomaly = 10;
+
+    // Fake classification results (you can adjust these for testing)
+    result->classification[0].value = 0.3f; // vacant confidence
+    result->classification[1].value = 0.7f; // car confidence
+
+    result->bounding_boxes_count = 0; // Not using object detection
+
+    if (debug) {
+        Serial.println("[DUMMY EI] Running fake classifier");
+    }
+
+    return EI_IMPULSE_OK;
+}

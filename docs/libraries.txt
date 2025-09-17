@@ -1,0 +1,52 @@
+# ESP32-CAM Parking Detection System - Required Libraries
+
+## Core ESP32 Libraries (Built-in with ESP32 Arduino Core)
+- Arduino.h
+- WiFi.h
+- esp_now.h
+- esp_wifi.h
+- esp_camera.h
+- esp_sleep.h
+
+## Edge Impulse Libraries
+- parkingpal5478069-project-1_inferencing.h
+  * This is your custom Edge Impulse model library
+  * Generated from your trained parking detection model
+  * Must be installed in Arduino/libraries/ folder
+
+- edge-impulse-sdk (dependency of above)
+  * Automatically included with Edge Impulse model
+  * Provides DSP and inference functions
+
+## Installation Instructions
+
+### 1. ESP32 Arduino Core
+Install via Arduino IDE Board Manager:
+- File → Preferences → Additional Board Manager URLs
+- Add: https://dl.espressif.com/dl/package_esp32_index.json
+- Tools → Board → Boards Manager → Search "ESP32" → Install
+
+### 2. Edge Impulse Model Library
+1. Export your trained model from Edge Impulse Studio
+2. Select "Arduino library" as deployment target
+3. Download the zip file
+4. Extract to Arduino/libraries/ folder
+5. Restart Arduino IDE
+
+### 3. Hardware Requirements
+- ESP32-CAM (AI-Thinker module)
+- MicroSD card (optional, for data logging)
+- External antenna (recommended for better RF range)
+
+### 4. Board Settings in Arduino IDE
+- Board: "AI Thinker ESP32-CAM"
+- Upload Speed: "115200"
+- Flash Frequency: "80MHz"
+- Flash Mode: "QIO"
+- Partition Scheme: "Huge APP (3MB No OTA/1MB SPIFFS)"
+- Core Debug Level: "None"
+
+### 5. Upload Method
+- Connect GPIO0 to GND before power-on for programming mode
+- Use FTDI adapter (3.3V) for serial communication
+- Remove GPIO0-GND connection after upload for normal operation
